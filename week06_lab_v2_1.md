@@ -550,9 +550,10 @@ Future<Weather> fetchWeatherWithDio(String city) async {
 2. รูปแบบการเขียน query parameters (`queryParameters: {...}`) ต่างจากการต่อ string URL เองแบบที่ทำใน `WeatherService` (ขั้นตอนที่ 2.3) 
 
 > ✅ **Checkpoint 5.1** ถ่ายภาพหน้าจอ Debug Console ที่แสดงผลลัพธ์จริงจากการเรียก `fetchWeatherWithDio()` (ค่าทั้ง 4 ฟิลด์ของ `Weather` ที่ print ออกมา หรือแสดงผลบนหน้าจอถ้าเลือกแบบที่ 2)
-```text
-บันทึกรูปที่นี่
-```
+
+<img width="938" height="90" alt="image" src="https://github.com/user-attachments/assets/48401e12-535e-47a0-880e-36ef90210430" />
+
+
 ### ขั้นตอนที่ 5.4 — 🧠 คิดเอง/ออกแบบเอง
 
 `DioException` มีหลายชนิด (`DioExceptionType`) แต่โค้ดในขั้นตอนที่ 5.2 จัดการเฉพาะ `connectionTimeout` ด้านล่างเป็นตัวอย่างการเพิ่มเงื่อนไขให้อีก 1 ชนิด (`badResponse`) ให้ดูเป็นแนวทาง จากนั้นให้เพิ่มเงื่อนไข `else if` อีกอย่างน้อย 1 ชนิดด้วยตัวเอง โดยเลือกจาก `DioExceptionType.receiveTimeout` หรือ `DioExceptionType.connectionError` (ห้ามซ้ำกับ `badResponse` ที่ให้เป็นตัวอย่างแล้ว) พร้อมข้อความแจ้งเตือนภาษาไทยที่เหมาะสมกับสาเหตุนั้นโดยเฉพาะ (ค้นคว้าความหมายของแต่ละชนิดได้จากเอกสารของแพ็กเกจ `dio` บน pub.dev)
@@ -574,13 +575,31 @@ Future<Weather> fetchWeatherWithDio(String city) async {
 > ✅ **Checkpoint 5.2** เปรียบเทียบสั้น ๆ ระหว่าง `http` กับ `dio` อย่างน้อย 3 ประเด็น โดยอ้างอิงจากสิ่งที่สังเกตได้จริงตอนทดลองในขั้นตอนที่ 5.3 เช่น การแปลง JSON อัตโนมัติ, การกำหนด Query Parameters, และรูปแบบการจัดการ Exception (`DioException` เทียบกับการดักจับหลายชนิดแยกกันแบบ `http`)
 
 ```text
-บันทึกคำตอบที่นี่
+จากการทดลองพบว่า http ต้องเรียก jsonDecode(response.body) เพื่อแปลง JSON ด้วยตนเอง และต้องประกอบ URL กับ Query Parameters เช่น q, appid และ units เอง ขณะที่ dio แปลง JSON เป็น response.data ให้อัตโนมัติและกำหนด Query Parameters แยกผ่าน queryParameters ได้อ่านง่ายกว่า นอกจากนี้ http ต้องดักจับ Exception หลายชนิด เช่น TimeoutException, http.ClientException และ FormatException รวมถึงตรวจสอบ statusCode เอง ส่วน dio ใช้ DioException และแยกสาเหตุผ่าน DioExceptionType เช่น connectionTimeout, badResponse, receiveTimeout และ connectionError จึงจัดการข้อผิดพลาดได้เป็นระบบและสะดวกกว่าเมื่อโปรเจกต์มีการเรียก API หลายรูปแบบ
 ```
 >
 > ✅ **Checkpoint 5.3** แสดงโค้ดเงื่อนไข `DioExceptionType` เพิ่มเติมที่เขียนเองในขั้นตอนที่ 5.4 
 
 ```text
-บันทึกคำตอบที่นี่
+} on DioException catch (e) {
+  if (e.type == DioExceptionType.connectionTimeout) {
+    throw Exception('การเชื่อมต่อหมดเวลา กรุณาลองใหม่อีกครั้ง');
+  } else if (e.type == DioExceptionType.badResponse) {
+    throw Exception(
+      'เซิร์ฟเวอร์ตอบกลับผิดพลาด (${e.response?.statusCode})',
+    );
+  } else if (e.type == DioExceptionType.receiveTimeout) {
+    throw Exception(
+      'รอรับข้อมูลจากเซิร์ฟเวอร์นานเกินไป กรุณาลองใหม่อีกครั้ง',
+    );
+  } else if (e.type == DioExceptionType.connectionError) {
+    throw Exception(
+      'ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้ กรุณาตรวจสอบอินเทอร์เน็ต',
+    );
+  }
+
+  throw Exception('เกิดข้อผิดพลาด: ${e.message}');
+}
 ```
 ---
 
