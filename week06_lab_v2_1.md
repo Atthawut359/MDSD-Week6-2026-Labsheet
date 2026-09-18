@@ -238,9 +238,9 @@ class WeatherService {
 
 > ✅ **Checkpoint 2.2** บันทึกผลการตรวจสอบ `statusCode` อย่างน้อย 2 กรณี (สำเร็จ และ 404) ตามเกณฑ์ข้างต้น
 
-```text
-บันทึกรูปและคำตอบที่นี่
-```
+
+<img width="1098" height="117" alt="image" src="https://github.com/user-attachments/assets/4f8d14be-5e4b-4bad-bcd6-001957d65d2d" />
+
 
 ### ขั้นตอนที่ 2.4 — 🧠 คิดเอง/ออกแบบเอง
 
@@ -357,9 +357,11 @@ class MyApp extends StatelessWidget {
 
 > ✅ **Checkpoint 2.3** รันแอปแล้วทดสอบทั้ง 3 สถานการณ์ คือ (1) ค้นหาเมืองที่มีจริง (2) ค้นหาเมืองที่ไม่มีอยู่จริง (3) ปิด Wi-Fi/Data บนเครื่องแล้วลองค้นหา ถ่ายภาพหน้าจอทั้ง 3 กรณี
 
-```text
-บันทึกรูปที่นี่
-```
+<img width="1571" height="317" alt="image" src="https://github.com/user-attachments/assets/8b597f5d-4dad-4921-afaa-f6956db8e2d7" />
+<img width="1095" height="268" alt="image" src="https://github.com/user-attachments/assets/7ff6e663-5793-44d0-831a-66ac293ee461" />
+<img width="1003" height="288" alt="image" src="https://github.com/user-attachments/assets/0949453c-8bf9-411a-b882-06653b437c30" />
+
+
 
 ---
 
@@ -408,9 +410,8 @@ ElevatedButton(
 จากนั้นรันแอป กดปุ่มนี้ แล้วดูผลลัพธ์ใน Debug Console (ปุ่มนี้เป็นแค่ปุ่มทดลองชั่วคราว ไม่ต้องมีการจัดการ Loading/Error ใด ๆ ต่างจากปุ่ม "ค้นหา" หลักของหน้า)
 
 > ✅ **Checkpoint 3.1** ถ่ายภาพหน้าจอ Debug Console ที่แสดง Status Code (ควรเป็น `201 Created`) พร้อม Response Body 
-```text
-บันทึกรูปและคำตอบที่นี่
-```
+
+<img width="852" height="227" alt="image" src="https://github.com/user-attachments/assets/aae7d950-396b-439c-9d64-5283b0351938" />
 
 ### ขั้นตอนที่ 3.2 — 🧠 คิดเอง/ออกแบบเอง
 
@@ -435,9 +436,8 @@ Future<void> updateDemoPost() async {
 
 > ✅ **Checkpoint 3.2** ถ่ายภาพหน้าจอ Debug Console ที่แสดง Status Code ของการเรียก PUT (ควรเป็น `200 OK`) 
 
-```text
-บันทึกรูปและคำตอบที่นี่
-```
+<img width="582" height="207" alt="image" src="https://github.com/user-attachments/assets/a3b673e1-e866-4151-93b8-30eb1477e00d" />
+
 ---
 
 ## ส่วนที่ 4: ใช้ AI ช่วย Generate โค้ด API Client
@@ -490,9 +490,8 @@ GET https://fakestoreapi.com/products
 ```
 
 > ✅ **Checkpoint 4.2** ถ่ายภาพหน้าจอ Debug Console ที่แสดงผลลัพธ์จริงจากการเรียก `fetchAiProducts()` (เช่น รายการสินค้าที่ print ออกมา) 
-```text
-บันทึกรูปที่นี่
-```
+
+<img width="987" height="701" alt="image" src="https://github.com/user-attachments/assets/2ba0e224-f02c-44fb-9de8-a4e6bb234011" />
 
 ---
 
