@@ -77,9 +77,12 @@ https://api.openweathermap.org/data/2.5/weather?q=Bangkok&appid=YOUR_API_KEY&uni
 
 > ✅ **Checkpoint 1.1** ถ่ายภาพหน้าจอ Postman ที่แสดง Status Code `200` พร้อม Response Body แบบเต็ม จากนั้นให้เขียนระบุใน ว่า key ใดใน JSON ที่คาดว่าจะต้องใช้แสดงผลในแอป (เช่น ชื่อเมือง, อุณหภูมิ, คำอธิบายสภาพอากาศ)
 
-```text
-บันทึกรูปและคำตอบที่นี่
-```
+<img width="1096" height="832" alt="image" src="https://github.com/user-attachments/assets/acd622a6-ae92-46cb-bd91-36e152638486" />
+<img width="1096" height="410" alt="image" src="https://github.com/user-attachments/assets/07f9b8fd-8556-4ca3-9358-b9a8339ff0a0" />
+<img width="1102" height="412" alt="image" src="https://github.com/user-attachments/assets/912c22fd-6ddb-4214-9920-f3fc9f14592e" />
+<img width="1100" height="410" alt="image" src="https://github.com/user-attachments/assets/d583d552-783a-4734-b90a-b5b28652300c" />
+
+
 ### ขั้นตอนที่ 1.2 — 🧠 คิดเอง/ออกแบบเอง
 
 ออกแบบการทดสอบกรณีผิดพลาด (error case) อย่างน้อย 1 กรณี โดยเปลี่ยนค่าพารามิเตอร์บางตัวใน Request ให้เป็นสิ่งที่คาดว่าจะทำให้เซิร์ฟเวอร์ตอบกลับด้วย error (ตัวอย่างแนวทางที่เลือกได้ เช่น เปลี่ยนชื่อเมืองเป็นชื่อที่ไม่มีอยู่จริง, ใส่ `appid` ผิด, หรือลบ `appid` ออกไปเลย) **ก่อนกด Send ให้เขียนคาดการณ์ ก่อนว่า นักศึกษาคิดว่า Status Code จะเป็นอะไร** แล้วจึงทดสอบจริงเพื่อเทียบกับที่คาดไว้
